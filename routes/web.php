@@ -18,3 +18,7 @@ Route::get('/', function () {
 Route::get('/login', 'UserController@index')->name('user.index');
 Route::post('/login', 'UserController@login')->name('user.login');
 Route::resource('product', 'ProductController')->except('edit','update');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
