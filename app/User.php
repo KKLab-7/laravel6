@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -36,19 +36,4 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
-    public static function login($email, $password)
-    {
-        $user = User::where('email',$email)
-                    ->where('password',$password)
-                    ->get();
-        if ($user) {
-            session(['user' => $user]);
-            return redirect()->action('ProductController@index');
-        } else {
-            $message = 'ログインできませんでした。';
-            return $message;
-        }
-    }
-
 }
